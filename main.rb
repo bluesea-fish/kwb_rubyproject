@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 ########~~MODULES~~###############
 require_relative 'WordsController'
 require 'colorize'
@@ -17,22 +18,22 @@ while true
 	puts "press CTRL-C to exit the program...", "\n"
 	
 	puts "English Word: ".magenta
-		input = gets.chomp.to_s.downcase
+		input = gets.chomp.to_s.downcase.rstrip
 
 	if wordsHash.include? (input) then
 		word = wordsHash[input]
 		puts "\n", "Korean Word: ".magenta, word.force_encoding("UTF-8").cyan
-		puts "\n", "Press enter to search another word..."
+		puts "\n", "Press enter to search for another word..."
 		gets()
 		system("cls")
 
 	elsif input == "" || nil then
-		puts "\n", "You forgot to type a word..."
+		puts "\n", "You forgot to type in a word..."
 		gets()
 		system("cls")
 	
-	elsif wordsHash.include?(input) != wordsHash.key(input) then
-		puts "That word isn\'t in our dictionary sorry about that..."
+	elsif wordsHash.include?(input) != wordsHash.key(wordsHash) then
+		puts "\n", "That word isn\'t in our dictionary sorry about that..."
 		gets()
 		system("cls")
 
