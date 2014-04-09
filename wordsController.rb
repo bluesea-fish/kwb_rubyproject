@@ -1,8 +1,9 @@
 ﻿# encoding: UTF-8
 
 class WordsController
+
 	def word_pairs
-		@word_hash 
+		@word_hash  = 
 		{
 			"hello" => "안녕하세요",
 			"korea" => "한국",
@@ -32,7 +33,7 @@ class WordsController
 			"door" => "문",
 			"bed" => "침대",
 			
-			#Planets/Space
+			#Planets/Space:
 			"saturn" => "토성",
 			"jupiter" => "목성",
 			"planet" => "행성",
@@ -41,10 +42,20 @@ class WordsController
 			"mars" => "화성",
 			"uranus" => "천왕성",
 			"pluto" => "명왕성",
-			"shooting star" => "유성"
+			"shooting star" => "유성",
 			
+			#Body/Medical:
+			"arm" => "팔",
+			"eye" => "눈",
+			"head" => "머리",
+			"nose" => "코",
+			"mouth" => "입",
+			"leg" => "다리",
+			"finger" => "손가락",
+			"ear" => "귀",
+			"stomach" => "배",
+			"hospital" => "병원"
 		}
 	
-	end
-		
+	end	
 end
