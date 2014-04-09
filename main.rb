@@ -6,9 +6,16 @@ require 'colorize'
 require 'win32console'
 ##################################
 
+#COMMENTS:
+=begin
+	To get korean fonts to work in the console on windows 7 and up you 
+	have to change the locale in the control panel and change it
+	to korean and reboot and then the use the code page code of '65001'
+	by 'chcp 65001'.
+=end
+
 loadHash = WordsController.new
 wordsHash = loadHash.word_pairs
-
 
 while true
 	puts "*****************************************".yellow
