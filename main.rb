@@ -1,10 +1,10 @@
 # encoding: UTF-8
-# using Ruby 1.9.3p
+# using Ruby 2.1.1
 
 ########~~MODULES~~###############
-require_relative 'WordsController'
+require_relative 'wordsController'
 require 'colorize'
-require 'win32console' # disable if you are on a unix type OS.
+#require 'win32console' # disable if you are on a unix type OS/ or enable if your on Windows.
 ##################################
 
 ##################~~~~~~~COMMENTS~~~~~####################################
@@ -32,7 +32,7 @@ while true
 	
 	
 	while @get_select_options.to_i == 1
-		system("cls")
+		system("clear")
 		puts "*****************************************".yellow
 		puts "      Welcome to Korean Word Buddy".red
 		puts "*****************************************".yellow
@@ -44,23 +44,23 @@ while true
 			puts "\n", "Korean Word: ".magenta, word.cyan
 			puts "\n", "Press enter to search for another word..."
 			gets()
-			system("cls")
+			system("clear")
 
 		elsif input == "" || nil then
 			puts "\n", "You forgot to type in a word..."
 			gets()
-			system("cls")
+			system("clear")
 	
 		elsif wordsHash.include?(input) != wordsHash.key(wordsHash) then
 			puts "\n", "That word isn\'t in our dictionary sorry about that..."
 			gets()
-			system("cls")
+			system("clear")
 		
 		end
 	end
 
 	while @get_select_options.to_i == 2 
-		system("cls")
+		system("clear")
 		puts "*****************************************".yellow
 		puts "      Welcome to Korean Word Buddy".red
 		puts "*****************************************".yellow
@@ -76,13 +76,14 @@ while true
 			wordcount = loadHash.totalWordCount
 			puts "\n", "#{wordcount} words are currently in the dictionary."
 			gets()
-			system("cls")
+			system("clear")
 		end
 		
 		if @inputcount.to_s == "version" then
-			puts "\n", "Current Version of Korean Word Buddy is: 0.1a"
+			app_version = "0.1a"
+			puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
 			gets()
-			system("cls")
+			system("clear")
 		end
 	end
 end
