@@ -21,6 +21,7 @@ loadHash = WordsController.new
 wordsHash = loadHash.wordPairs
 
 while true
+	system("clear")
 	puts "*****************************************".yellow
 	puts "      Welcome to Korean Word Buddy".red
 	puts "*****************************************".yellow
@@ -30,60 +31,72 @@ while true
 	puts "Press 2 for options...", "\n"
 	@get_select_options = gets.chomp
 	
-	
-	while @get_select_options.to_i == 1
+	if @get_select_options.to_i == -1 then
 		system("clear")
-		puts "*****************************************".yellow
-		puts "      Welcome to Korean Word Buddy".red
-		puts "*****************************************".yellow
-		puts "English Word: ".magenta
-			input = gets.chomp.to_s.downcase.rstrip
+		break
+	elsif
+		while @get_select_options.to_i == 1
+			system("clear")
+			puts "*****************************************".yellow
+			puts "      Welcome to Korean Word Buddy".red
+			puts "*****************************************".yellow
+			puts "English Word: ".magenta
+				input = gets.chomp.to_s.downcase.rstrip
 		
-		if wordsHash.include? (input) then
-			word = wordsHash[input]
-			puts "\n", "Korean Word: ".magenta, word.cyan
-			puts "\n", "Press enter to search for another word..."
-			gets()
-			system("clear")
+			if input == "--back" then
+				break
 
-		elsif input == "" || nil then
-			puts "\n", "You forgot to type in a word..."
-			gets()
-			system("clear")
+			elsif wordsHash.include? (input) then
+				word = wordsHash[input]
+				puts "\n", "Korean Word: ".magenta, word.cyan
+				puts "\n", "Press enter to search for another word..."
+				gets()
+				system("clear")
+
+			elsif input == "" || nil then
+				puts "\n", "You forgot to type in a word..."
+				gets()
+				system("clear")
 	
-		elsif wordsHash.include?(input) != wordsHash.key(wordsHash) then
-			puts "\n", "That word isn\'t in our dictionary sorry about that..."
-			gets()
-			system("clear")
+			elsif wordsHash.include?(input) != wordsHash.key(wordsHash) then
+				puts "\n", "That word isn\'t in our dictionary sorry about that..."
+				gets()
+				system("clear")
 		
+			end
 		end
-	end
 
-	while @get_select_options.to_i == 2 
-		system("clear")
-		puts "*****************************************".yellow
-		puts "      Welcome to Korean Word Buddy".red
-		puts "*****************************************".yellow
-		puts "     **************************".yellow
-		puts "          Settings/Options	".red
-		puts "     **************************".yellow
-		
-		puts "1. Dictionary Word Count: type 'show word count' ", "\n"
-		puts "2. Application Version: type 'version'"
-		
-		@inputcount = gets.chomp
-		if @inputcount.to_s == "show word count" then
-			wordcount = loadHash.totalWordCount
-			puts "\n", "#{wordcount} words are currently in the dictionary."
-			gets()
+	elsif
+		while @get_select_options.to_i == 2 
 			system("clear")
-		end
+			puts "*****************************************".yellow
+			puts "      Welcome to Korean Word Buddy".red
+			puts "*****************************************".yellow
+			puts "     **************************".yellow
+			puts "          Settings/Options	".red
+			puts "     **************************".yellow
 		
-		if @inputcount.to_s == "version" then
-			app_version = "0.1a"
-			puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
-			gets()
-			system("clear")
+			puts "1. Dictionary Word Count: type 'show word count' ", "\n"
+			puts "2. Application Version: type 'version'"
+		
+			@inputcount = gets.chomp
+		
+			if @inputcount == "--back" then
+				break
+
+			elsif @inputcount.to_s == "show word count" then
+				wordcount = loadHash.totalWordCount
+				puts "\n", "#{wordcount} words are currently in the dictionary."
+				gets()
+				system("clear")
+		
+		
+			elsif @inputcount.to_s == "version" then
+				app_version = "0.1a"
+				puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
+				gets()
+				system("clear")
+			end
 		end
 	end
 end
