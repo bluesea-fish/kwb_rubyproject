@@ -1,8 +1,7 @@
 ﻿# encoding: UTF-8
 
 class WordsController
-	@@word_hash  = 
-		{
+	@@word_hash  = 	{
 			"hello" => "안녕하세요",
 			"korea" => "한국",
 			"man" => "남자",
@@ -81,6 +80,11 @@ class WordsController
 			"epidemic" => "유행성",
 			"childbirth" => "출산",
 			"childcare" => "보육",
+			"doctor" => "의사",
+			"teeth" => "이",
+			"cough" => "기침",
+			"sneeze" => "재채기",
+			"cancer" => "암",
 			
 			
 			#Science/life/chemicals:
@@ -94,6 +98,8 @@ class WordsController
 			"chemical" => "화학",
 			"lab" => "실험실",
 			"biology" => "생물학",
+			"carbohydrate" => "탄수화물",
+			"physics" => "물리학",
 			
 			#Cooking/Food/Beverage:
 			"beer" => "맥주",
@@ -102,6 +108,54 @@ class WordsController
 			"sausage" => "소시지",
 			"pot" => "냄비",
 			"cookie" => "쿠키",
+			"meat" => "고기",
+			"beef" => "소고기",
+			"pork" => "돼지고기",
+			"peanut" => "땅콩",
+			"bread" => "빵",
+			"pumpkin" => "호박",
+			"kimchi" => "김치",
+			"pineapple" => "파인애플",
+			"grape" => "포도",
+			"cantaloupe" => "캔털로프",
+			"kiwi" => "키위",
+			"popcorn" => "팝콘",
+			"corn" => "옥수수",
+			"flour" => "밀가루",
+			"fish" => "물고기",
+			
+
+			#Animals:
+			"rabbit" => "토끼",
+			"donkey" => "당나귀",
+			"eagle" => "독수리",
+			"lizard" => "도마뱀",
+			"elephant" => "코끼리",
+			"giraffe" => "기린",
+			"frog" => "개구리",
+			"goat" => "염소",
+			"shark" => "상어",
+			"camel" => "낙타",
+			"deer" => "사슴",
+			"dolphin" => "돌고래",
+			"salmon" => "연어",
+			"fox" => "여우",
+			"bird" => "새",
+			"monkey" => "원숭이",
+			"whale" => "고래",
+			"sea horse" => "해마",
+			"starfish" => "불가사리",
+			"jellyfish" => "해파리",
+			"octopus" => "낙지",
+			"squid" => "오징어",
+			"clam" => "조개",
+			"tiger" => "호랑이",
+			"cat" => "고양이",
+			"rat" => "쥐",
+			"puppy" => "강아지",
+			"dog" => "개",
+			"cow" => "소",
+			"mosquito" => "모기"
 		}
 
 	def wordPairs
