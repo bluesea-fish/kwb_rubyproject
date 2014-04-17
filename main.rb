@@ -18,7 +18,6 @@ require 'os'
 =end
 #########################################################################
 
-
 def clear_screen
 	if OS.windows? then
 		system("cls")
