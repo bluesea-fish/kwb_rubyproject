@@ -1,168 +1,22 @@
 ﻿# encoding: UTF-8
 
 class WordsController
-	@@word_hash  = 	{
-			"hello" => "안녕하세요",
-			"korea" => "한국",
-			"man" => "남자",
-			"woman" => "여자",
-			"love" => "사랑",
-			"city" => "도시",
-			"name" => "도시",
-			
-			#Colors:
-			"black" => "검정색",
-			"red" => "빨강색",
-			"blue" => "파랑색",
-			"grey" => "회색",
-			"green" => "녹색",
-			"white" => "흰색",
-			"yellow" => "노랑색",
-			"purple" => "보라색",
-			"orange" => "주황색",
-			"pink" => "분홍색",
-			
-			#furniture:
-			"chair" => "의자",
-			"table" => "탁자",
-			"sofa" => "소파",
-			"house" => "집",
-			"door" => "문",
-			"bed" => "침대",
-			
-			#Planets/Space:
-			"saturn" => "토성",
-			"jupiter" => "목성",
-			"planet" => "행성",
-			"venus" => "금성",
-			"earth" => "지구",
-			"mars" => "화성",
-			"uranus" => "천왕성",
-			"pluto" => "명왕성",
-			"shooting star" => "유성",
-			
-			#Body/Medical/illnesses:
-			"arm" => "팔",
-			"eye" => "눈",
-			"head" => "머리",
-			"nose" => "코",
-			"mouth" => "입",
-			"leg" => "다리",
-			"finger" => "손가락",
-			"ear" => "귀",
-			"ankle" => "",
-			"thumb" => "엄지",
-			"knee" => "무릎",
-			"stomach" => "배",
-			"hospital" => "병원",
-			"nostril" => "콧구멍",
-			"palm" => "손바닥",
-			"blood" => "피",
-			"lungs" => "폐",
-			"abdomen" => "배",
-			"heart" => "심장",
-			"pulse" => "맥박",
-			"medication" => "약",
-			"syringe" => "주사기",
-			"liver" => "간",
-			"ambulance" => "구급차",
-			"blister" => "물집",
-			"anesthesia" => "마취",
-			"pharmacy" => "약국",
-			"nurse" => "간호사",
-			"butt" => "엉덩이",
-			"blind" => "맹인",
-			"deaf" => "귀머거리",
-			"brain" => "뇌",
-			"urine" => "오줌",
-			"weight" => "중량",
-			"armpit" => "겨드랑이",
-			"epidemic" => "유행성",
-			"childbirth" => "출산",
-			"childcare" => "보육",
-			"doctor" => "의사",
-			"teeth" => "이",
-			"cough" => "기침",
-			"sneeze" => "재채기",
-			"cancer" => "암",
-			
-			
-			#Science/life/chemicals:
-			"carbon" => "탄소",
-			"oxygen" => "산소",
-			"helium" => "헬륨",
-			"zinc" => "아연",
-			"iron" => "철",
-			"ammonia" => "암모니아",
-			"water" => "물",
-			"chemical" => "화학",
-			"lab" => "실험실",
-			"biology" => "생물학",
-			"carbohydrate" => "탄수화물",
-			"physics" => "물리학",
-			
-			#Cooking/Food/Beverage:
-			"beer" => "맥주",
-			"wine" => "와인",
-			"eel" => "장어",
-			"sausage" => "소시지",
-			"pot" => "냄비",
-			"cookie" => "쿠키",
-			"meat" => "고기",
-			"beef" => "소고기",
-			"pork" => "돼지고기",
-			"peanut" => "땅콩",
-			"bread" => "빵",
-			"pumpkin" => "호박",
-			"kimchi" => "김치",
-			"pineapple" => "파인애플",
-			"grape" => "포도",
-			"cantaloupe" => "캔털로프",
-			"kiwi" => "키위",
-			"popcorn" => "팝콘",
-			"corn" => "옥수수",
-			"flour" => "밀가루",
-			"fish" => "물고기",
-			
+	
+	#Reads in the 'kwords.dat' file into a ruby hash:
+	@@words_hash = Hash.new
+	File.open('kwords.dat').each do |line|
+		eng_word, kor_word = line.split(/,/)
+		@@words_hash[eng_word] = kor_word
+	end
 
-			#Animals:
-			"rabbit" => "토끼",
-			"donkey" => "당나귀",
-			"eagle" => "독수리",
-			"lizard" => "도마뱀",
-			"elephant" => "코끼리",
-			"giraffe" => "기린",
-			"frog" => "개구리",
-			"goat" => "염소",
-			"shark" => "상어",
-			"camel" => "낙타",
-			"deer" => "사슴",
-			"dolphin" => "돌고래",
-			"salmon" => "연어",
-			"fox" => "여우",
-			"bird" => "새",
-			"monkey" => "원숭이",
-			"whale" => "고래",
-			"sea horse" => "해마",
-			"starfish" => "불가사리",
-			"jellyfish" => "해파리",
-			"octopus" => "낙지",
-			"squid" => "오징어",
-			"clam" => "조개",
-			"tiger" => "호랑이",
-			"cat" => "고양이",
-			"rat" => "쥐",
-			"puppy" => "강아지",
-			"dog" => "개",
-			"cow" => "소",
-			"mosquito" => "모기"
-		}
 
 	def wordPairs
-		return @@word_hash
+		return @@words_hash	
 	end	
 	
 	def totalWordCount
-		return @@word_hash.length
+		return @@words_hash.length
 	end
+
+	
 end

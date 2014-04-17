@@ -1,10 +1,11 @@
 # encoding: UTF-8
-# using Ruby 2.1.1
+# using RVM Ruby 2.1.1
 
 ########~~MODULES~~###############
 require_relative 'wordsController'
 require 'colorize'
 require 'readline'
+require 'os'
 #require 'win32console' # disable if you are on a unix type OS/ or enable if your on Windows.
 ##################################
 
@@ -17,19 +18,21 @@ require 'readline'
 =end
 #########################################################################
 
-begin
-	require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
-rescue LoadError
-      	raise 'You must gem install win32console to use colorize on Windows'
+
+def clear_screen
+	if OS.windows? then
+		system("cls")
+	elsif OS.posix? then
+		system("clear")	
+	end
 end
-
-
 
 loadHash = WordsController.new
 wordsHash = loadHash.wordPairs
 
+
 while true
-	system("clear")
+	clear_screen
 	puts "*****************************************".yellow
 	puts "      Welcome to Korean Word Buddy".red
 	puts "*****************************************".yellow
@@ -40,11 +43,11 @@ while true
 	@get_select_options = gets.chomp
 	
 	if @get_select_options.to_i == -1 then
-		system("clear")
+		clear_screen
 		break
 	elsif
 		while @get_select_options.to_i == 1
-			system("clear")
+			clear_screen
 			puts "*****************************************".yellow
 			puts "      Welcome to Korean Word Buddy".red
 			puts "*****************************************".yellow
@@ -62,7 +65,7 @@ while true
 				puts "\n", "Korean Word: ".light_magenta.underline, word.light_cyan
 				puts "\n", "Press enter to search for another word..."
 				gets()
-				system("clear")
+				clear_screen
 
 			elsif input == "" || nil then
 				puts "\n", "You forgot to type in a word..."
@@ -72,14 +75,14 @@ while true
 			elsif wordsHash.include?(input) != wordsHash.key(wordsHash) then
 				puts "\n", "That word isn\'t in our dictionary sorry about that..."
 				gets()
-				system("clear")
+				clear_screen
 		
 			end
 		end
 
 	elsif
 		while @get_select_options.to_i == 2 
-			system("clear")
+			clear_screen
 			puts "*****************************************".yellow
 			puts "      Welcome to Korean Word Buddy".red
 			puts "*****************************************".yellow
@@ -100,14 +103,14 @@ while true
 				wordcount = loadHash.totalWordCount
 				puts "\n", "#{wordcount} words are currently in the dictionary."
 				gets()
-				system("clear")
+				clear_screen
 		
 		
 			elsif @inputcount.to_s == "version" then
 				app_version = "0.1a"
 				puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
 				gets()
-				system("clear")
+				clear_screen
 			
 			elsif @inputcount.to_s == "show words" then
 				puts "\n"
