@@ -1,12 +1,11 @@
 # encoding: UTF-8
-# using RVM Ruby 2.1.1
 
 ########~~MODULES~~###############
 require_relative 'wordsController'
 require 'colorize'
 require 'readline'
 require 'os'
-#require 'win32console' # disable if you are on a unix type OS/ or enable if your on Windows.
+require 'win32console' # disable if you are on a unix type OS/ or enable if your on Windows.
 ##################################
 
 ##################~~~~~~~COMMENTS~~~~~####################################
