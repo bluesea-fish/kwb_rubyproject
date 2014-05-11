@@ -18,27 +18,27 @@ require 'win32console' # disable if you are on a unix type OS/ or enable if your
 #########################################################################
 
 def clear_screen
-	if OS.windows? then
-		system("cls")
-	elsif OS.posix? then
-		system("clear")	
-	end
+  if OS.windows? then 
+	  system("cls")
+  elsif OS.posix? then
+	system("clear")	
+end
+
 end
 
 loadHash = WordsController.new
 wordsHash = loadHash.wordPairs
 
-
 while true
-	clear_screen
-	puts "*****************************************".yellow
-	puts "      Welcome to Korean Word Buddy".red
-	puts "*****************************************".yellow
+  clear_screen
+  puts "*****************************************".yellow
+  puts "      Welcome to Korean Word Buddy".red
+  puts "*****************************************".yellow
 	
-	puts "Type -1 to exit the program...", "\n"
-	puts "Press 1 for word search..."
-	puts "Press 2 for options...", "\n"
-	@get_select_options = gets.chomp
+  puts "Type -1 to exit the program...", "\n"
+  puts "Press 1 for word search..."
+  puts "Press 2 for options...", "\n"
+  @get_select_options = gets.chomp
 	
 	if @get_select_options.to_i == -1 then
 		clear_screen
@@ -105,23 +105,21 @@ while true
 		
 		
 			elsif @inputcount.to_s == "version" then
-				app_version = "0.1a"
+				app_version = "0.1a".blue
 				puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
 				gets()
 				clear_screen
 			
 			elsif @inputcount.to_s == "show words" then
 				puts "\n"
-				puts "Enlgish Words in Dicitonary: ".underline
+				puts "English Words in Dictionary: ".underline
 				engKeys = wordsHash.keys
 				engKeys.each do |eword|
 					puts eword
 					gets()
+			    
 				end
 			end
 		end
 	end
-
 end
-
-	
