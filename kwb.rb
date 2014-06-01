@@ -1,11 +1,7 @@
 # encoding: UTF-8
 
 ########~~MODULES~~###############
-require_relative 'wordsController'
-require 'colorize'
-require 'readline'
 require 'os'
-require 'win32console' # disable if you are on a unix type OS/ or enable if your on Windows.
 ##################################
 
 ##################~~~~~~~COMMENTS~~~~~####################################
@@ -17,23 +13,37 @@ require 'win32console' # disable if you are on a unix type OS/ or enable if your
 =end
 #########################################################################
 
+# Reads in the 'kwords.dat' file into a ruby hash:
+  @words_hash = Hash.new
+  Dir.chdir(File.dirname(__FILE__)) # gotta make sure that the file is in the same directory:
+  File.open('kwords.dat', 'r').each do |line|
+	  eng_word, kor_word = line.split(/,/)
+	  @words_hash[eng_word] = kor_word
+	end
+
+def wordPairs
+	return @words_hash	
+end	
+		
+def totalWordCount
+	return @words_hash.length
+end
+		
 def clear_screen
-  if OS.windows? then 
-	  system("cls")
-  elsif OS.posix? then
-	system("clear")	
+  	if OS.windows? then 
+	 	system("cls")
+  	elsif OS.posix? then
+		system("clear")	
+	end
 end
 
-end
-
-loadHash = WordsController.new
-wordsHash = loadHash.wordPairs
+wordsHash = wordPairs
 
 while true
   clear_screen
-  puts "*****************************************".yellow
-  puts "      Welcome to Korean Word Buddy".red
-  puts "*****************************************".yellow
+  puts "*****************************************"
+  puts "      Welcome to Korean Word Buddy"
+  puts "*****************************************"
 	
   puts "Type -1 to exit the program...", "\n"
   puts "Press 1 for word search..."
@@ -46,13 +56,13 @@ while true
 	elsif
 		while @get_select_options.to_i == 1
 			clear_screen
-			puts "*****************************************".yellow
-			puts "      Welcome to Korean Word Buddy".red
-			puts "*****************************************".yellow
-			puts "     **************************".yellow
-			puts "            Word Search	".light_blue
-			puts "     **************************".yellow
-			puts "English Word: ".light_magenta.underline
+			puts "*****************************************"
+			puts "      Welcome to Korean Word Buddy"
+			puts "*****************************************"
+			puts "     **************************"
+			puts "            Word Search	"
+			puts "     **************************"
+			puts "English Word: "
 				input = gets.chomp.to_s.downcase.rstrip
 		
 			if input == "--back" then
@@ -60,7 +70,7 @@ while true
 
 			elsif wordsHash.include? (input) then
 				word = wordsHash[input]
-				puts "\n", "Korean Word: ".light_magenta.underline, word.light_cyan
+				puts "\n", "Korean Word: "
 				puts "\n", "Press enter to search for another word..."
 				gets()
 				clear_screen
@@ -81,12 +91,12 @@ while true
 	elsif
 		while @get_select_options.to_i == 2 
 			clear_screen
-			puts "*****************************************".yellow
-			puts "      Welcome to Korean Word Buddy".red
-			puts "*****************************************".yellow
-			puts "     **************************".yellow
-			puts "          Settings/Options	".light_blue
-			puts "     **************************".yellow
+			puts "*****************************************"
+			puts "      Welcome to Korean Word Buddy"
+			puts "*****************************************"
+			puts "     **************************"
+			puts "          Settings/Options	"
+			puts "     **************************"
 		
 			puts "1. Dictionary Word Count: type 'show word count' ", "\n"
 			puts "2. Application Version: type 'version'", "\n" 
@@ -98,24 +108,25 @@ while true
 				break
 
 			elsif @inputcount.to_s == "show word count" then
-				wordcount = loadHash.totalWordCount
+				wordcount = totalWordCount
 				puts "\n", "#{wordcount} words are currently in the dictionary."
 				gets()
 				clear_screen
 		
 		
 			elsif @inputcount.to_s == "version" then
-				app_version = "0.1a".blue
+				app_version = "0.1a"
 				puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
 				gets()
 				clear_screen
 			
 			elsif @inputcount.to_s == "show words" then
 				puts "\n"
-				puts "English Words in Dictionary: ".underline
+				puts "English Words in Dictionary: "
 				engKeys = wordsHash.keys
-				engKeys.each do |eword|
+				engKeys.sort.each 5.times do |eword|
 					puts eword
+					
 					gets()
 			    
 				end
