@@ -37,7 +37,14 @@ def clear_screen
 	end
 end
 
+
 wordsHash = wordPairs
+
+# => Menu Commands vars:
+back = "-back"
+app_version_command = "version"
+word_count = "show word count"
+list_words = "show words"
 
 while true
   clear_screen
@@ -63,14 +70,17 @@ while true
 			puts "            Word Search	"
 			puts "     **************************"
 			puts "English Word: "
+			puts "---------------"
 				input = gets.chomp.to_s.downcase.rstrip
 		
-			if input == "--back" then
+			if input == back then
 				break
 
 			elsif wordsHash.include? (input) then
 				word = wordsHash[input]
-				puts "\n", "Korean Word: ", word
+				puts "\n", "Korean Word: "
+				puts "---------------"
+				puts word
 				puts "\n", "Press enter to search for another word..."
 				gets()
 				clear_screen
@@ -104,32 +114,31 @@ while true
 		
 			@inputcount = gets.chomp
 		
-			if @inputcount == "--back" then
+			if @inputcount == back then
 				break
 
-			elsif @inputcount.to_s == "show word count" then
+			elsif @inputcount.to_s == word_count then
 				wordcount = totalWordCount
 				puts "\n", "#{wordcount} words are currently in the dictionary."
 				gets()
 				clear_screen
 		
 		
-			elsif @inputcount.to_s == "version" then
+			elsif @inputcount.to_s == app_version_command then
 				app_version = "0.1a"
 				puts "\n", "Current Version of Korean Word Buddy is: #{app_version}"
 				gets()
 				clear_screen
 			
-			elsif @inputcount.to_s == "show words" then
+			elsif @inputcount.to_s == list_words then
 				puts "\n"
 				puts "English Words in Dictionary: "
 				puts "-----------------------------"
 				engKeys = wordsHash.keys
 				engKeys.sort.each do |eword|
 					puts eword
-					
 					gets()
-			    
+			    	#end
 				end
 			end
 		end
