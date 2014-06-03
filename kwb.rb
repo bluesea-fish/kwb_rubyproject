@@ -70,7 +70,7 @@ while true
 
 			elsif wordsHash.include? (input) then
 				word = wordsHash[input]
-				puts "\n", "Korean Word: "
+				puts "\n", "Korean Word: ", word
 				puts "\n", "Press enter to search for another word..."
 				gets()
 				clear_screen
@@ -123,8 +123,9 @@ while true
 			elsif @inputcount.to_s == "show words" then
 				puts "\n"
 				puts "English Words in Dictionary: "
+				puts "-----------------------------"
 				engKeys = wordsHash.keys
-				engKeys.sort.each 5.times do |eword|
+				engKeys.sort.each do |eword|
 					puts eword
 					
 					gets()
